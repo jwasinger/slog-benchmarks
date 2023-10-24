@@ -9,17 +9,17 @@ import (
 )
 
 func BenchmarkJson(b *testing.B) {
-	log.Root().SetHandler(log.WrapHandler(log.MinLvl, log.StreamHandler(io.Discard, log.JSONFormat())))
+	log.SetDefault(log.NewLogger(log.JsonHandler(io.Discard)))
 
 	for i := 0; i < b.N; i++ {
 		log.Info("a message", "foo", "bar", "baz", "bat")		
 	}
 }
 
-func BenchmarkGloggerNotEnabled(b *testing.B) {
-	glogHandler := log.NewGlogHandler(log.StreamHandler(io.Discard, log.TerminalFormat(false)))
-	glogHandler.Verbosity(log.LvlError)
-	log.Root().SetHandler(glogHandler)
+func BenchmarkGloggerDisabled(b *testing.B) {
+	glogHandler := log.NewGlogHandler(log.TerminalHandler(io.Discard, false))
+	glogHandler.Verbosity(log.LevelError)
+	log.SetDefault(log.NewLogger(glogHandler))
 
 	for i := 0; i < b.N; i++ {
 		log.Info("foo", "bar", "baz", "bat")		
@@ -27,10 +27,10 @@ func BenchmarkGloggerNotEnabled(b *testing.B) {
 	
 }
 
-func BenchmarkGloggerEnabledDiscardHandler(b *testing.B) {
+func BenchmarkGloggerDiscard(b *testing.B) {
 	glogHandler := log.NewGlogHandler(log.DiscardHandler())
-	glogHandler.Verbosity(log.LvlInfo)
-	log.Root().SetHandler(glogHandler)
+	glogHandler.Verbosity(log.LevelInfo)
+	log.SetDefault(log.NewLogger(glogHandler))
 
 	for i := 0; i < b.N; i++ {
 		log.Info("foo", "bar", "baz", "bat")		
@@ -38,10 +38,32 @@ func BenchmarkGloggerEnabledDiscardHandler(b *testing.B) {
 	
 }
 
-func BenchmarkGloggerEnabledStreamHandler(b *testing.B) {
-	glogHandler := log.NewGlogHandler(log.StreamHandler(io.Discard, log.TerminalFormat(false)))
-	glogHandler.Verbosity(log.LvlInfo)
-	log.Root().SetHandler(glogHandler)
+func BenchmarkGloggerTerminal(b *testing.B) {
+	glogHandler := log.NewGlogHandler(log.TerminalHandler(io.Discard, false))
+	glogHandler.Verbosity(log.LevelInfo)
+	log.SetDefault(log.NewLogger(glogHandler))
+
+	for i := 0; i < b.N; i++ {
+		log.Info("foo", "bar", "baz", "bat")		
+	}
+	
+}
+
+func BenchmarkGloggerLogfmt(b *testing.B) {
+	glogHandler := log.NewGlogHandler(log.LogfmtHandler(io.Discard))
+	glogHandler.Verbosity(log.LevelInfo)
+	log.SetDefault(log.NewLogger(glogHandler))
+
+	for i := 0; i < b.N; i++ {
+		log.Info("foo", "bar", "baz", "bat")		
+	}
+	
+}
+
+func BenchmarkGloggerJson(b *testing.B) {
+	glogHandler := log.NewGlogHandler(log.TerminalHandler(io.Discard, false))
+	glogHandler.Verbosity(log.LevelInfo)
+	log.SetDefault(log.NewLogger(glogHandler))
 
 	for i := 0; i < b.N; i++ {
 		log.Info("foo", "bar", "baz", "bat")		
