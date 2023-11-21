@@ -1,6 +1,6 @@
 github.com/holiman/uint256 v1.2.3 h1:K8UWO1HUJpRMXBxbmaY1Y8IAMZC/RsKB+ArEnnK4l5o=
 github.com/holiman/uint256 v1.2.3/go.mod h1:SC8Ryt4n+UBbPbIBKaG9zbbDlp4jOru9xFZmPzLUTxw=
-github.com/jwasinger/go-ethereum v1.10.9-0.20231024102021-926ea2e9618d h1:lzysLIRrwVcyUbwg7xKM/eA4ba1UfMHOdATUyj0LlmM=
-github.com/jwasinger/go-ethereum v1.10.9-0.20231024102021-926ea2e9618d/go.mod h1:I0U5VewuuTzvBtVzKo7b3hJzDhXOUtn9mJW7SsIPB0Q=
-golang.org/x/exp v0.0.0-20230905200255-921286631fa9 h1:GoHiUyI/Tp2nVkLI2mCxVkOjsbSXD66ic0XW0js0R9g=
-golang.org/x/exp v0.0.0-20230905200255-921286631fa9/go.mod h1:S2oDrQGGwySpoQPVqRShND87VCbxmc6bL1Yd2oYrm6k=
+github.com/jwasinger/go-ethereum v1.10.9-0.20231120152306-ec2e836aa398 h1:zAXoxxhlRZ6/Jb7a8clZm2QdqZXFYka6B97TOfSKbA4=
+github.com/jwasinger/go-ethereum v1.10.9-0.20231120152306-ec2e836aa398/go.mod h1:XAtiMj8d3Pa/H2RGapmUk4AQ2PdzR8o2dkWNb/aEeiw=
+golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa h1:FRnLl4eNAQl8hwxVVC17teOw8kdjVDVAiFMtgUdTSRQ=
+golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa/go.mod h1:zk2irFbV9DP96SEBUUAy67IdHUaZuSnrz1n472HUCLE=

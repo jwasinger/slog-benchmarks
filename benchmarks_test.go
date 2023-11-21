@@ -9,7 +9,7 @@ import (
 )
 
 func BenchmarkJson(b *testing.B) {
-	log.SetDefault(log.NewLogger(log.JsonHandler(io.Discard)))
+	log.SetDefault(log.NewLogger(log.JSONHandler(io.Discard)))
 
 	for i := 0; i < b.N; i++ {
 		log.Info("a message", "foo", "bar", "baz", "bat")		
@@ -17,7 +17,7 @@ func BenchmarkJson(b *testing.B) {
 }
 
 func BenchmarkGloggerDisabled(b *testing.B) {
-	glogHandler := log.NewGlogHandler(log.TerminalHandler(io.Discard, false))
+	glogHandler := log.NewGlogHandler(log.NewTerminalHandler(io.Discard, false))
 	glogHandler.Verbosity(log.LevelError)
 	log.SetDefault(log.NewLogger(glogHandler))
 
@@ -39,7 +39,7 @@ func BenchmarkGloggerDiscard(b *testing.B) {
 }
 
 func BenchmarkGloggerTerminal(b *testing.B) {
-	glogHandler := log.NewGlogHandler(log.TerminalHandler(io.Discard, false))
+	glogHandler := log.NewGlogHandler(log.NewTerminalHandler(io.Discard, false))
 	glogHandler.Verbosity(log.LevelInfo)
 	log.SetDefault(log.NewLogger(glogHandler))
 
@@ -61,7 +61,7 @@ func BenchmarkGloggerLogfmt(b *testing.B) {
 }
 
 func BenchmarkGloggerJson(b *testing.B) {
-	glogHandler := log.NewGlogHandler(log.TerminalHandler(io.Discard, false))
+	glogHandler := log.NewGlogHandler(log.NewTerminalHandler(io.Discard, false))
 	glogHandler.Verbosity(log.LevelInfo)
 	log.SetDefault(log.NewLogger(glogHandler))
 
