@@ -13,7 +13,7 @@ func lazy() interface{} {
 	return time.Now()
 }
 
-func BenchmarkGloggerNotEnabled(b *testing.B) {
+func BenchmarkGloggerDisabled(b *testing.B) {
 	glogHandler := log.NewGlogHandler(log.StreamHandler(io.Discard, log.TerminalFormat(false)))
 	glogHandler.Verbosity(log.LvlError)
 	log.Root().SetHandler(glogHandler)
