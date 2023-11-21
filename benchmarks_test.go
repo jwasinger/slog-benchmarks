@@ -24,18 +24,6 @@ func BenchmarkGloggerDisabled(b *testing.B) {
 	}
 }
 
-func BenchmarkGloggerDiscard(b *testing.B) {
-	glogHandler := log.NewGlogHandler(log.DiscardHandler())
-	glogHandler.Verbosity(log.LevelInfo)
-	log.SetDefault(log.NewLogger(glogHandler))
-
-	num, _ := new(big.Int).SetString("123412312901879817298712498719248791283798124", 10)
-
-	for i := 0; i < b.N; i++ {
-		log.Info("a message", "big.Int", num, "lazy(time)", log.Lazy{lazy})
-	}
-}
-
 func BenchmarkGloggerTerminal(b *testing.B) {
 	glogHandler := log.NewGlogHandler(log.NewTerminalHandler(io.Discard, false))
 	glogHandler.Verbosity(log.LevelInfo)

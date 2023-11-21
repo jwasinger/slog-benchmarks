@@ -9,4 +9,4 @@ require (
 	golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa // indirect
 )
 
-replace github.com/ethereum/go-ethereum => github.com/holiman/go-ethereum v1.5.5-0.20231120052824-43779e144bbe
+replace github.com/ethereum/go-ethereum => github.com/jwasinger/go-ethereum v1.10.9-0.20231120152306-ec2e836aa398
